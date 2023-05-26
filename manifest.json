@@ -1,0 +1,60 @@
+{
+  "name": "editHeader",
+  "description": "Base Level Extension",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "./packages/popup/build/index.html",
+    "default_icon": "./packages/popup/build/logo192.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens ./packages/popup/build/index.html"
+    }
+  },
+  "options_page": "./packages/options/build/index.html",
+  "options_ui": {
+    "page": "./packages/options/build/index.html",
+    "chrome_style": false
+  },
+  "permissions": [
+    "storage",
+    "declarativeContent",
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "options",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": [
+      "./background/background.js"
+    ],
+    "persistent": true
+  },
+  "web_accessible_resources": [
+    "/src/getWindow.js"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "./src/main.js"
+      ],
+      "css": [
+        "./src/index.css"
+      ]
+    }
+  ],
+  "devtools_page": "./devtools/devtools.html"
+}

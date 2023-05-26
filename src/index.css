@@ -1,0 +1,9 @@
+#pixel_root{
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    z-index: 99999;
+    background-color: #fff;
+}
