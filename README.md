@@ -43,4 +43,4 @@ pnpm build:options
 
 ```
 
-# pnpm dlx create-react-app packages/app2 --template typescript 基于react创建子包
+## pnpm dlx create-react-app packages/app2 --template typescript 基于react创建子包

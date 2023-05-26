@@ -5,7 +5,12 @@
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "./packages/popup/build/index.html",
-    "default_icon": "./packages/popup/build/logo192.png"
+    "default_icon": "./assets/logo.png"
+  },
+  "icons": {
+    "16": "./assets/logo.png",
+    "48": "./assets/logo.png",
+    "128": "./assets/logo.png"
   },
   "commands": {
     "_execute_browser_action": {
