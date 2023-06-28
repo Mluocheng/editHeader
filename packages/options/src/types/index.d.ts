@@ -1,6 +1,7 @@
 type Rule = {
     value: string
     key: string
+    type: "add" | "del" 
 }
 
 type Groups = {

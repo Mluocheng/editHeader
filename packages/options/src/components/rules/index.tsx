@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import { Button, Form, FormListFieldData, Input, Space } from 'antd';
+import { Button, Form, FormListFieldData, Input, Space, Switch, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { updateListeners } from '../../utils/updateListeners';
 const FormList = Form.List;
@@ -9,6 +9,7 @@ const FormItem = Form.Item;
 
 function Rules() {
     const onFinish = (values: Values) => {
+        console.log("values.groups:", values.groups)
         if (values.groups) updateListeners(values.groups)
     };
 
@@ -32,13 +33,16 @@ function Rules() {
                                     <FormItem name={[level2Field.name, 'key']} noStyle rules={[{ required: true, message: '必填' }]}>
                                         <Input placeholder="key" />
                                     </FormItem>
-                                    <FormItem name={[level2Field.name, 'value']} rules={[{ required: true, message: '必填' }]} noStyle>
+                                    <FormItem name={[level2Field.name, 'type']} noStyle rules={[{ required: true, message: '必填' }]}>
+                                        <Select options={[{ label: '添加', value: 'add' }, { label:'删除', value: 'del' }]} />
+                                    </FormItem>
+                                    <FormItem name={[level2Field.name, 'value']} rules={[{ required: false, message: '删除时不必填' }]} noStyle>
                                         <Input placeholder="value" />
                                     </FormItem>
                                     <MinusCircleOutlined onClick={() => remove(level2Field.name)} />
                                 </Space>
                             ))}
-                            <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                            <Button type="dashed" onClick={() => add({ type: 'add' })} block icon={<PlusOutlined />}>
                                 添加
                             </Button>
                             <Form.ErrorList errors={errors} />
